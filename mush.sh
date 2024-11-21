@@ -943,7 +943,7 @@ attempt_backup_update(){
     doas rm -f $tmpdir/image.zip
 
     echo "Creating loop device..."
-    local loop=$(doas losetup -f | tr -d '\r')
+    local loop=$(doas losetup -f | tr -d '\r' | tail -1)
     doas losetup -P "$loop" "$tmpdir/image.bin"
 
     printf "Overwriting backup in 3 (this is your last chance to cancel)..."
